@@ -22,12 +22,12 @@ public class MessageInputOutputService {
         this.outputMessage = outputMessage;
     }
 
-    // delegate work to low level MessageInput class
+    // delegate work to low level input class
     public void getMessage() {
         inputMessage.getMessageInput();
     }
 
-    // delegate work to low level MessageOutput class
+    // delegate work to low level output class
     public void displayMessage() {
         outputMessage.displayMessageOutput();
     }
@@ -38,6 +38,9 @@ public class MessageInputOutputService {
     }
 
     public void setInputMessage(MessageInput inputMessage) {
+        if (inputMessage == null) {
+            throw new IllegalArgumentException("Error");
+        }
         this.inputMessage = inputMessage;
     }
 
@@ -47,6 +50,9 @@ public class MessageInputOutputService {
     }
 
     public void setOutputMessage(MessageOutput outputMessage) {
+        if (outputMessage == null) {
+            throw new IllegalArgumentException("Error");
+        }
         this.outputMessage = outputMessage;
     }
 

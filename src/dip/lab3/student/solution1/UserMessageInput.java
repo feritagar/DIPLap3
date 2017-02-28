@@ -17,26 +17,30 @@ public class UserMessageInput implements MessageInput {
     private String userMessage;
 
     public UserMessageInput(String userName) {
-        this.userName = userName;
+        this.userMessage = userName;
 
     }
 
-    public String getUserName() {
+    public final String getUserName() {
         return userName;
     }
-
-    public void setUserName(String userName) {
+    //open-close princible.All concrete method should be final.
+    //dangerous inheritance
+    public final void setUserName(String userName) {
         if (userName == null || userName.length() == 0) {
-            throw new UnsupportedOperationException("User Name CAN NOT be empty!!!");
+            throw new IllegalArgumentException("User Name CAN NOT be empty!!!");
         }
         this.userName = userName;
     }
 
-    public String getMessage() {
+    public final String getMessage() {
         return userMessage;
     }
 
-    public void setMessage(String userMessage) {
+    public final void setMessage(String userMessage) {
+        if (userMessage == null || userMessage.length() == 0) {
+            throw new IllegalArgumentException("no message");
+        }
         this.userMessage = userMessage;
     }
 
